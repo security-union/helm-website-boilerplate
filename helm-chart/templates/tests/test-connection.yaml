@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "helm-nginx-website-boilerplate.fullname" . }}-test-connection"
+  name: "{{ include "helm-website-boilerplate.fullname" . }}-test-connection"
   labels:
-    {{- include "helm-nginx-website-boilerplate.labels" . | nindent 4 }}
+    {{- include "helm-website-boilerplate.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "helm-nginx-website-boilerplate.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "helm-website-boilerplate.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
